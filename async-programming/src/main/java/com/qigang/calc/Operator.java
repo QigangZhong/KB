@@ -54,5 +54,20 @@ public class Operator {
          * 补码的补码      0000 0000 0000 0000 0000 0000 0000 0110 得到6
          *
          * */
+
+
+        /**
+         * 位运算
+         * https://www.cnblogs.com/WJ-163/p/5549854.html
+         */
+        int number = 10;
+        //原始数二进制
+        System.out.println(number);
+        number = number << 1;
+        //左移一位
+        System.out.println(number);
+        number = number >> 1;
+        //右移一位
+        System.out.println(number);
     }
 }
