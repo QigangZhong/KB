@@ -1,14 +1,13 @@
-package com.qigang.threadpool;
+package com.qigang.thread;
 
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
  * http://www.cnblogs.com/dolphin0520/p/3932921.html
  */
-public class TestThreadPool {
+public class MyThreadPool {
     public static void main(String[] args) {
         ThreadPoolExecutor executor=new ThreadPoolExecutor(
                 5,
@@ -18,23 +17,21 @@ public class TestThreadPool {
                 new LinkedBlockingQueue<>());
 
         for(int i=0;i<15;i++){
-            MyTask myTask = new MyTask(i);
-            executor.execute(myTask);
+            MyRunnable myRunnable = new MyRunnable(i);
+            executor.execute(myRunnable);
             System.out.println("线程池中线程数目："+executor.getPoolSize()+
                     "，队列中等待执行的任务数目："+executor.getQueue().size()+
                     "，已执行完别的任务数目："+executor.getCompletedTaskCount());
         }
 
         executor.shutdown();
-
-
     }
 }
 
-class MyTask implements Runnable {
+class MyRunnable implements Runnable {
     private int taskNum;
 
-    public MyTask(int num) {
+    public MyRunnable(int num) {
         this.taskNum = num;
     }
 

@@ -8,9 +8,11 @@ public class SynchronizedRunnableImpl implements Runnable {
      */
     @Override
     public synchronized void run() {
+        System.out.println(Thread.currentThread().getName()+"开始执行");
         while(num>0){
             System.out.println(Thread.currentThread().getName()+": "+num);
             num--;
         }
+        System.out.println(Thread.currentThread().getName()+"结束执行");
     }
 }
